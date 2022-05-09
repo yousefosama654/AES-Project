@@ -1,0 +1,41 @@
+module test_bench();
+
+reg [7:0] Word;
+reg [3:0] Nk;
+reg Clk;
+wire [127:0] CurrentState;
+wire [127:0] Out2;
+
+
+initial 
+begin
+		Word = 8'h00;
+		Nk = 4;
+		Clk = 0;
+#50   Word = 8'h11;
+#100   Word = 8'h22;
+#100   Word = 8'h33;
+#100   Word = 8'h44;
+#100   Word = 8'h55;
+#100   Word = 8'h66;
+#100   Word = 8'h77;
+#100   Word = 8'h88;
+#100   Word = 8'h99;
+#100   Word = 8'haa;
+#100   Word = 8'hbb;
+#100   Word = 8'hcc;
+#100   Word = 8'hdd;
+#100   Word = 8'hee;
+#100   Word = 8'hff;
+$finish;
+end
+
+always 
+begin
+		Clk = ~Clk;
+		#50;
+end
+
+AES A(Word,Nk,Clk,Out2,CurrentState);
+
+endmodule 

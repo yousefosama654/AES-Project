@@ -1,0 +1,29 @@
+module AES(Nk ,Out2);
+reg [127:0] PlainText4;
+reg [127:0] PlainText6;
+reg [127:0] Key4;
+reg [192:0] Key6;
+wire [127:0] Out4;
+wire [127:0] Out6;
+input [3:0] Nk;
+output reg [127:0] Out2;
+EncryptNK4 KG4 (PlainText4,Key4,Out4);
+EncryptNK6 KG6 (PlainText6,Key6,Out6);
+initial 
+begin
+		PlainText4 = 128'h00112233445566778899aabbccddeeff;
+		PlainText6 = 128'h00112233445566778899aabbccddeeff;
+		Key4 =       128'h000102030405060708090a0b0c0d0e0f;
+		Key6 =       192'h000102030405060708090a0b0c0d0e0f1011121314151617;
+end
+
+always @(Nk)
+begin
+		if (Nk == 4)
+		Out2 = Out4;
+		if (Nk == 6)
+		Out2 = Out6;
+end
+
+
+endmodule 
