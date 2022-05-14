@@ -1,59 +1,40 @@
 
-module AES(Word,Nk,Clk,Out2,CurrentState);
-input [7:0] Word;
-input Clk;
+module AES(Text, Key, Nk, Encryption, Decryption);
 
-reg [127:0] PlainText4;
-reg [127:0] PlainText6;
-reg [127:0] PlainText8;
+input  [127:0] Text;
+input  [256:0] Key;
+input  [3:0]   Nk;
+output [127:0] Encryption;
+output [127:0] Decryption;
 
+wire [127:0] Key4;
+wire [192:0] Key6;
+wire [255:0] Key8;
 
-reg [127:0] Key4;
-reg [192:0] Key6;
-reg [255:0] Key8;
+assign Key4 = Key[127:0];
+assign Key6 = Key[191:0];
+assign Key8 = Key[255:0];
 
-wire [127:0] Out4;
-wire [127:0] Out6;
-wire [127:0] Out8;
+wire [127:0] EOut4;
+wire [127:0] EOut6;
+wire [127:0] EOut8;
+wire [127:0] DOut4;
+wire [127:0] DOut6;
+wire [127:0] DOut8;
 
-input [3:0] Nk;
-output [127:0] Out2;
-output[127:0] CurrentState;
+EncryptNK4    E4 (Text,Key4,EOut4);
+EncryptNK6    E6 (Text,Key6,EOut6);
+EncryptNK8    E8 (Text,Key8,EOut8);
 
-assign CurrentState = PlainText4;
-
-integer i;
-initial i = 127;
-integer j;
-initial j = 0;
-EncryptNK4 KG4 (PlainText4,Key4,Out4);
-EncryptNK6 KG6 (PlainText6,Key6,Out6);
-EncryptNK8 KG8 (PlainText8,Key8,Out8);
-
-initial 
-begin
-//		PlainText4 = 128'h00112233445566778899aabbccddeeff;
-		PlainText6 = 128'h00112233445566778899aabbccddeeff;
-		PlainText8 = 128'h00112233445566778899aabbccddeeff;
-		Key4 =       128'h000102030405060708090a0b0c0d0e0f;
-		Key6 =       192'h000102030405060708090a0b0c0d0e0f1011121314151617;
-		Key8 =       256'h000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f;
-end
-
-always @(posedge Clk)
-begin
-		for (j = 0; j < 8 ; j = j+1)
-		begin
-				PlainText4[i] = Word[7-j];
-				i = i - 1;
-		end
-		j = 0;
-end
+DecryptNK4 D4 (EOut4,Key4,DOut4);
+DecryptNK6 D6 (EOut6,Key6,DOut6);
+DecryptNK8 D8 (EOut8,Key8,DOut8);
 
 
-assign Out2 = Out4;
-//				  Nk == 6 ? Out6 :
-//				  Nk == 8 ? Out8 : 256'hz;
-
+assign Encryption = Nk == 4 ? EOut4 :
+						  Nk == 6 ? EOut6 : EOut8;
+						  
+assign Decryption = Nk == 4 ? DOut4 :
+						  Nk == 6 ? DOut6 : DOut8;
 
 endmodule 

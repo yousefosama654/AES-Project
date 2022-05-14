@@ -1,260 +1,331 @@
 module GenerateKey8 (InKey,Round,OutKey);
 
-	input  [255:0]  InKey;
-	output [255:0]  OutKey;
-	input [3:0] Round;
+input  [255:0]  InKey;
+input [3:0] Round;
+output [255:0]  OutKey;
 	
-	wire [31:0] LastCol;
-	wire [31:0] FirstCol;
+wire [31:0] LastCol;
+wire [31:0] FirstCol;	
+wire [31:0] RCon;
+wire [31:0] SubCol;
+wire [31:0] SubCol2;
+wire [31:0] newCol;
+
+assign LastCol = InKey[31:0];
+assign FirstCol = InKey[255:224];
+
 	
-	assign LastCol = InKey[31:0];
-	assign FirstCol = InKey[255:224];
-	
-	wire [31:0] RCon;
-	
-	assign RCon = Round == 1  ? 32'b00000001000000000000000000000000 :
-					  Round == 2  ? 32'b00000010000000000000000000000000 :
-					  Round == 3  ? 32'b00000100000000000000000000000000 :
-					  Round == 4  ? 32'b00001000000000000000000000000000 :
-					  Round == 5  ? 32'b00010000000000000000000000000000 :
-					  Round == 6  ? 32'b00100000000000000000000000000000 :
-					  Round == 7  ? 32'b01000000000000000000000000000000 :
-					  Round == 8  ? 32'b10000000000000000000000000000000 :
-					  Round == 9  ? 32'b00011011000000000000000000000000 :
-					  Round == 10 ? 32'b00110110000000000000000000000000 : 0;
+assign RCon = Round == 1  ? 32'b00000001000000000000000000000000 :
+				  Round == 2  ? 32'b00000010000000000000000000000000 :
+				  Round == 3  ? 32'b00000100000000000000000000000000 :
+				  Round == 4  ? 32'b00001000000000000000000000000000 :
+				  Round == 5  ? 32'b00010000000000000000000000000000 :
+				  Round == 6  ? 32'b00100000000000000000000000000000 :
+				  Round == 7  ? 32'b01000000000000000000000000000000 :
+				  Round == 8  ? 32'b10000000000000000000000000000000 :
+				  Round == 9  ? 32'b00011011000000000000000000000000 :
+				  Round == 10 ? 32'b00110110000000000000000000000000 : 0;
 		
-	wire [31:0] newCol = {LastCol[23:0] , LastCol[31:24]};
-	wire [31:0] SubCol;
-	wire [31:0] SubCol2;
-	SubBytes SB(newCol,SubCol);
-	assign OutKey[255:224] = SubCol ^ FirstCol ^ RCon;
-	assign OutKey[223:192] = InKey[223:192] ^ OutKey[255:224];
-	assign OutKey[191:160] = InKey[191:160] ^ OutKey[223:192];
-	assign OutKey[159:128] = InKey[159:128] ^ OutKey[191:160];
-	SubBytes SB2 (OutKey[159:128],SubCol2);
-	assign OutKey[127:96]  = InKey[127:96]  ^ SubCol2;
-	assign OutKey[95:64]   = InKey[95:64]   ^ OutKey[127:96];
-	assign OutKey[63:32]   = InKey[63:32]   ^ OutKey[95:64];
-	assign OutKey[31:0]    = InKey[31:0]    ^ OutKey[63:32];
+assign newCol = {LastCol[23:0] , LastCol[31:24]};
+
+SubBytes SB(newCol,SubCol);
+assign OutKey[255:224] = SubCol ^ FirstCol ^ RCon;
+assign OutKey[223:192] = InKey[223:192] ^ OutKey[255:224];
+assign OutKey[191:160] = InKey[191:160] ^ OutKey[223:192];
+assign OutKey[159:128] = InKey[159:128] ^ OutKey[191:160];
+
+SubBytes SB2 (OutKey[159:128],SubCol2);
+assign OutKey[127:96]  = InKey[127:96]  ^ SubCol2;
+assign OutKey[95:64]   = InKey[95:64]   ^ OutKey[127:96];
+assign OutKey[63:32]   = InKey[63:32]   ^ OutKey[95:64];
+assign OutKey[31:0]    = InKey[31:0]    ^ OutKey[63:32];
 	
 endmodule 
 
 ///////////////////////////////////////////////////////////////////////
 
 module KeysGeneration8 (OriginalKey , OutKeys);
-	input [255:0] OriginalKey;
-	output [1919:0] OutKeys;  // 15 4*4 Key
+input [255:0] OriginalKey;
+output [1919:0] OutKeys;
 
-	wire [255:0] Key1;
-	wire [255:0] Key2;
-	wire [255:0] Key3;
-	wire [255:0] Key4;
-	wire [255:0] Key5;
-	wire [255:0] Key6;
-	wire [255:0] Key7;
+wire [255:0] Key[6:0];
 
-	assign OutKeys[1919 : 1664] = OriginalKey;
-	GenerateKey8 K1   (OriginalKey,1, Key1);
-	GenerateKey8 K2   (Key1, 2, Key2);
-	GenerateKey8 K3   (Key2, 3, Key3);
-	GenerateKey8 K4   (Key3, 4, Key4);
-	GenerateKey8 K5   (Key4, 5, Key5);
-	GenerateKey8 K6   (Key5, 6, Key6);
-	GenerateKey8 K7   (Key6, 7, Key7); 
+GenerateKey8 K1   (OriginalKey,1, Key[0]);
+GenerateKey8 K2   (Key[0], 2, Key[1]);
+GenerateKey8 K3   (Key[1], 3, Key[2]);
+GenerateKey8 K4   (Key[2], 4, Key[3]);
+GenerateKey8 K5   (Key[3], 5, Key[4]);
+GenerateKey8 K6   (Key[4], 6, Key[5]);
+GenerateKey8 K7   (Key[5], 7, Key[6]); 
 
-	assign OutKeys[1663:1408] = Key1;
-	assign OutKeys[1407:1152] = Key2;
-	assign OutKeys[1151:896]  = Key3;
-	assign OutKeys[895:640]   = Key4;
-	assign OutKeys[639:384]   = Key5;
-	assign OutKeys[383:128]   = Key6;
-	assign OutKeys[127:0]     = Key7[255:128];
+assign OutKeys[1919 : 1664] = OriginalKey;
+assign OutKeys[1663:1408] = Key[0];
+assign OutKeys[1407:1152] = Key[1];
+assign OutKeys[1151:896]  = Key[2];
+assign OutKeys[895:640]   = Key[3];
+assign OutKeys[639:384]   = Key[4];
+assign OutKeys[383:128]   = Key[5];
+assign OutKeys[127:0]     = Key[6][255:128];
 endmodule
 
 ///////////////////////////////////////////////////////////////////////
 
 module EncryptNK8 (PlainText,Key,Encryption); 
 
-	input  [127:0] PlainText;
-	input  [255:0] Key;
-	output [127:0] Encryption;
+input  [127:0] PlainText;
+input  [255:0] Key;
+output [127:0] Encryption;
 
-	wire [1919:0] WorkingKeys;
-	KeysGeneration8 KG8 (Key,WorkingKeys);
+wire [1919:0] WorkingKeys;
+KeysGeneration8 KG8 (Key,WorkingKeys);
 
-	wire [127:0] Key0;
-	wire [127:0] Key1;
-	wire [127:0] Key2;
-	wire [127:0] Key3;
-	wire [127:0] Key4;
-	wire [127:0] Key5;
-	wire [127:0] Key6;
-	wire [127:0] Key7;
-	wire [127:0] Key8;
-	wire [127:0] Key9;
-	wire [127:0] Key10;
-	wire [127:0] Key11;
-	wire [127:0] Key12;
-	wire [127:0] Key13;
-	wire [127:0] Key14;
+wire [127:0] Keys [14:0];
+wire [127:0] XOR  [14:0];
+wire [127:0] Sub  [13:0];
+wire [127:0] Shift[13:0];
+wire [127:0] Mix  [12:0];
 
-	assign Key0 = WorkingKeys[1919:1792];
-	assign Key1 = WorkingKeys[1791:1664];
-	assign Key2 = WorkingKeys[1663:1536];
-	assign Key3 = WorkingKeys[1535:1408];
-	assign Key4 = WorkingKeys[1407:1280];
-	assign Key5 =  WorkingKeys[1279:1152];
-	assign Key6 =  WorkingKeys[1151:1024];
-	assign Key7 =  WorkingKeys[1023:896];
-	assign Key8 =  WorkingKeys[895:768];
-	assign Key9 =  WorkingKeys[767:640];
-	assign Key10 =  WorkingKeys[639:512];
-	assign Key11 =  WorkingKeys[511:384];
-	assign Key12 =  WorkingKeys[383:256];
-	assign Key13 =  WorkingKeys[255:128];
-	assign Key14 = WorkingKeys[127:0];
+assign Keys[0]  =  WorkingKeys[1919:1792];
+assign Keys[1]  =  WorkingKeys[1791:1664];
+assign Keys[2]  =  WorkingKeys[1663:1536];
+assign Keys[3]  =  WorkingKeys[1535:1408];
+assign Keys[4]  =  WorkingKeys[1407:1280];
+assign Keys[5]  =  WorkingKeys[1279:1152];
+assign Keys[6]  =  WorkingKeys[1151:1024];
+assign Keys[7]  =  WorkingKeys[1023:896];
+assign Keys[8]  =  WorkingKeys[895:768];
+assign Keys[9]  =  WorkingKeys[767:640];
+assign Keys[10] =  WorkingKeys[639:512];
+assign Keys[11] =  WorkingKeys[511:384];
+assign Keys[12] =  WorkingKeys[383:256];
+assign Keys[13] =  WorkingKeys[255:128];
+assign Keys[14] =  WorkingKeys[127:0];
 
-	// Pre-Rounds
-	wire [127:0] XOR0;
-	AddRoundKey ARK0 (PlainText,Key0,XOR0);
-	//==========================================
-	//Round 1
-	wire [127:0] Sub1;
-	FullSubBytes S1(XOR0 , Sub1);
-	wire [127:0] Shift1;
-	ShiftRows Sh1(Sub1,Shift1);
-	wire [127:0] Mix1;
-	MixColumns MC1(Shift1,Mix1);
-	wire [127:0] XOR1;
-	AddRoundKey ARK1(Mix1,Key1,XOR1);
-	//==========================================
-	//Round 2
-	wire [127:0] Sub2;
-	FullSubBytes S2(XOR1 , Sub2);
-	wire [127:0] Shift2;
-	ShiftRows Sh2(Sub2,Shift2);
-	wire [127:0] Mix2;
-	MixColumns MC2(Shift2,Mix2);
-	wire [127:0] XOR2;
-	AddRoundKey ARK2(Mix2,Key2,XOR2);
-	//==========================================
-	//Round 3
-	wire [127:0] Sub3;
-	FullSubBytes S3(XOR2 , Sub3);
-	wire [127:0] Shift3;
-	ShiftRows Sh3(Sub3,Shift3);
-	wire [127:0] Mix3;
-	MixColumns MC3(Shift3,Mix3);
-	wire [127:0] XOR3;
-	AddRoundKey ARK3(Mix3,Key3,XOR3);
-	//==========================================
-	//Round 4
-	wire [127:0] Sub4;
-	FullSubBytes S4(XOR3 , Sub4);
-	wire [127:0] Shift4;
-	ShiftRows Sh4(Sub4,Shift4);
-	wire [127:0] Mix4;
-	MixColumns MC4(Shift4,Mix4);
-	wire [127:0] XOR4;
-	AddRoundKey ARK4(Mix4,Key4,XOR4);
-	//==========================================
-	//Round 5
-	wire [127:0] Sub5;
-	FullSubBytes S5(XOR4 , Sub5);
-	wire [127:0] Shift5;
-	ShiftRows Sh5(Sub5,Shift5);
-	wire [127:0] Mix5;
-	MixColumns MC5(Shift5,Mix5);
-	wire [127:0] XOR5;
-	AddRoundKey ARK5(Mix5,Key5,XOR5);
-	//==========================================
-	//Round 6
-	wire [127:0] Sub6;
-	FullSubBytes S6(XOR5 , Sub6);
-	wire [127:0] Shift6;
-	ShiftRows Sh6(Sub6,Shift6);
-	wire [127:0] Mix6;
-	MixColumns MC6(Shift6,Mix6);
-	wire [127:0] XOR6;
-	AddRoundKey ARK6(Mix6,Key6,XOR6);
-	//==========================================
-	//Round 7
-	wire [127:0] Sub7;
-	FullSubBytes S7(XOR6 , Sub7);
-	wire [127:0] Shift7;
-	ShiftRows Sh7(Sub7,Shift7);
-	wire [127:0] Mix7;
-	MixColumns MC7(Shift7,Mix7);
-	wire [127:0] XOR7;
-	AddRoundKey ARK7(Mix7,Key7,XOR7);
-	//==========================================
-	//Round 8
-	wire [127:0] Sub8;
-	FullSubBytes S8(XOR7 , Sub8);
-	wire [127:0] Shift8;
-	ShiftRows Sh8(Sub8,Shift8);
-	wire [127:0] Mix8;
-	MixColumns MC8(Shift8,Mix8);
-	wire [127:0] XOR8;
-	AddRoundKey ARK8(Mix8,Key8,XOR8);
-	//==========================================
-	//Round 9
-	wire [127:0] Sub9;
-	FullSubBytes S9(XOR8 , Sub9);
-	wire [127:0] Shift9;
-	ShiftRows Sh9(Sub9,Shift9);
-	wire [127:0] Mix9;
-	MixColumns MC9(Shift9,Mix9);
-	wire [127:0] XOR9;
-	AddRoundKey ARK9(Mix9,Key9,XOR9);
-	//==========================================
-	//Round 10
-	wire [127:0] Sub10;
-	FullSubBytes S10(XOR9 , Sub10);
-	wire [127:0] Shift10;
-	ShiftRows Sh10(Sub10,Shift10);
-	wire [127:0] Mix10;
-	MixColumns MC10(Shift10,Mix10);
-	wire [127:0] XOR10;
-	AddRoundKey ARK10(Mix10,Key10,XOR10);
-	//==========================================
-	//Round 11
-	wire [127:0] Sub11;
-	FullSubBytes S11(XOR10 , Sub11);
-	wire [127:0] Shift11;
-	ShiftRows Sh11(Sub11,Shift11);
-	wire [127:0] Mix11;
-	MixColumns MC11(Shift11,Mix11);
-	wire [127:0] XOR11;
-	AddRoundKey ARK11(Mix11,Key11,XOR11);
-	//==========================================
-	//Round 12
-	wire [127:0] Sub12;
-	FullSubBytes S12(XOR11 , Sub12);
-	wire [127:0] Shift12;
-	ShiftRows Sh12(Sub12,Shift12);
-	wire [127:0] Mix12;
-	MixColumns MC12(Shift12,Mix12);
-	wire [127:0] XOR12;
-	AddRoundKey ARK12(Mix12,Key12,XOR12);
-	//==========================================
-	//Round 13
-	wire [127:0] Sub13;
-	FullSubBytes S13(XOR12 , Sub13);
-	wire [127:0] Shift13;
-	ShiftRows Sh13(Sub13,Shift13);
-	wire [127:0] Mix13;
-	MixColumns MC13(Shift13,Mix13);
-	wire [127:0] XOR13;
-	AddRoundKey ARK13(Mix13,Key13,XOR13);
-	//==========================================
-	//Round 14
-	wire [127:0] Sub14;
-	FullSubBytes S14(XOR13 , Sub14);
-	wire [127:0] Shift14;
-	ShiftRows Sh14(Sub14,Shift14);
-	wire [127:0] XOR14;
-	AddRoundKey ARK14(Shift14,Key14,XOR14);
+// Pre-Rounds
+AddRoundKey ARK0 (PlainText,Keys[0],XOR[0]);
+//==========================================
+//Round 1
+FullSubBytes S1(XOR[0] , Sub[0]);
+ShiftRows Sh1(Sub[0],Shift[0]);
+MixColumns MC1(Shift[0],Mix[0]);
+AddRoundKey ARK1(Mix[0],Keys[1],XOR[1]);
+//==========================================
+//Round 2
+FullSubBytes S2(XOR[1] , Sub[1]);
+ShiftRows Sh2(Sub[1],Shift[1]);
+MixColumns MC2(Shift[1],Mix[1]);
+AddRoundKey ARK2(Mix[1],Keys[2],XOR[2]);
+//==========================================
+//Round 3
+FullSubBytes S3(XOR[2] , Sub[2]);
+ShiftRows Sh3(Sub[2],Shift[2]);
+MixColumns MC3(Shift[2],Mix[2]);
+AddRoundKey ARK3(Mix[2],Keys[3],XOR[3]);
+//==========================================
+//Round 4
+FullSubBytes S4(XOR[3] , Sub[3]);
+ShiftRows Sh4(Sub[3],Shift[3]);
+MixColumns MC4(Shift[3],Mix[3]);
+AddRoundKey ARK4(Mix[3],Keys[4],XOR[4]);
+//==========================================
+//Round 5
+FullSubBytes S5(XOR[4] , Sub[4]);
+ShiftRows Sh5(Sub[4],Shift[4]);
+MixColumns MC5(Shift[4],Mix[4]);
+AddRoundKey ARK5(Mix[4],Keys[5],XOR[5]);
+//==========================================
+//Round 6
+FullSubBytes S6(XOR[5] , Sub[5]);
+ShiftRows Sh6(Sub[5],Shift[5]);
+MixColumns MC6(Shift[5],Mix[5]);
+AddRoundKey ARK6(Mix[5],Keys[6],XOR[6]);
+//==========================================
+//Round 7
+FullSubBytes S7(XOR[6] , Sub[6]);
+ShiftRows Sh7(Sub[6],Shift[6]);
+MixColumns MC7(Shift[6],Mix[6]);
+AddRoundKey ARK7(Mix[6],Keys[7],XOR[7]);
+//==========================================
+//Round 8
+FullSubBytes S8(XOR[7] , Sub[7]);
+ShiftRows Sh8(Sub[7],Shift[7]);
+MixColumns MC8(Shift[7],Mix[7]);
+AddRoundKey ARK8(Mix[7],Keys[8],XOR[8]);
+//==========================================
+//Round 9
+FullSubBytes S9(XOR[8] , Sub[8]);
+ShiftRows Sh9(Sub[8],Shift[8]);
+MixColumns MC9(Shift[8],Mix[8]);
+AddRoundKey ARK9(Mix[8],Keys[9],XOR[9]);
+//==========================================
+//Round 10
+FullSubBytes S10(XOR[9] , Sub[9]);
+ShiftRows Sh10(Sub[9],Shift[9]);
+MixColumns MC10(Shift[9],Mix[9]);
+AddRoundKey ARK10(Mix[9],Keys[10],XOR[10]);
+//==========================================
+//Round 11
+FullSubBytes S11(XOR[10] , Sub[10]);
+ShiftRows Sh11(Sub[10],Shift[10]);
+MixColumns MC11(Shift[10],Mix[10]);
+AddRoundKey ARK11(Mix[10],Keys[11],XOR[11]);
+//==========================================
+//Round 12
+FullSubBytes S12(XOR[11] , Sub[11]);
+ShiftRows Sh12(Sub[11],Shift[11]);
+MixColumns MC12(Shift[11],Mix[11]);
+AddRoundKey ARK12(Mix[11],Keys[12],XOR[12]);
+//==========================================
+//Round 13
+FullSubBytes S13(XOR[12] , Sub[12]);
+ShiftRows Sh13(Sub[12],Shift[12]);
+MixColumns MC13(Shift[12],Mix[12]);
+AddRoundKey ARK13(Mix[12],Keys[13],XOR[13]);
+//==========================================
+//Round 14
+FullSubBytes S14(XOR[13] , Sub[13]);
+ShiftRows Sh14(Sub[13],Shift[13]);
+AddRoundKey ARK14(Shift[13],Keys[14],XOR[14]);
+
 	
-	assign Encryption = XOR14;
+assign Encryption = XOR[14];
 endmodule	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+module DecryptNK8 (PlainText,Key,Decryption); 
+
+input  [127:0] PlainText;
+input  [255:0] Key;
+output [127:0] Decryption;
+
+wire [1919:0] WorkingKeys;
+wire [127:0]  Keys [14:0];
+wire [127:0]  XOR  [14:0];
+wire [127:0]  Sub  [13:0];
+wire [127:0]  Shift[13:0];
+wire [127:0]  Mix  [12:0];
+
+KeysGeneration8 KG8 (Key,WorkingKeys);
+
+
+assign Keys[14]  =  WorkingKeys[1919:1792];
+assign Keys[13]  =  WorkingKeys[1791:1664];
+assign Keys[12]  =  WorkingKeys[1663:1536];
+assign Keys[11]  =  WorkingKeys[1535:1408];
+assign Keys[10]  =  WorkingKeys[1407:1280];
+assign Keys[9]  =  WorkingKeys[1279:1152];
+assign Keys[8]  =  WorkingKeys[1151:1024];
+assign Keys[7]  =  WorkingKeys[1023:896];
+assign Keys[6]  =  WorkingKeys[895:768];
+assign Keys[5]  =  WorkingKeys[767:640];
+assign Keys[4] =  WorkingKeys[639:512];
+assign Keys[3] =  WorkingKeys[511:384];
+assign Keys[2] =  WorkingKeys[383:256];
+assign Keys[1] =  WorkingKeys[255:128];
+assign Keys[0] =  WorkingKeys[127:0];
+
+
+// Pre-Rounds
+AddRoundKey ARK0 (PlainText,Keys[0],XOR[0]);
+//==========================================
+
+//Round 1
+InvShiftRows Sh1(XOR[0],Shift[0]);
+Inv_Full_SubBytes S1(Shift[0] , Sub[0]);
+AddRoundKey ARK1(Sub[0],Keys[1],XOR[1]);
+inverse_mix_columns MC1(XOR[1],Mix[0]);
+//==========================================
+
+//Round 2
+InvShiftRows Sh2(Mix[0],Shift[1]);
+Inv_Full_SubBytes S2(Shift[1] , Sub[1]);
+AddRoundKey ARK2(Sub[1],Keys[2],XOR[2]);
+inverse_mix_columns MC2(XOR[2],Mix[1]);
+//==========================================
+
+//Round 3
+InvShiftRows Sh3(Mix[1],Shift[2]);
+Inv_Full_SubBytes S3(Shift[2] , Sub[2]);
+AddRoundKey ARK3(Sub[2],Keys[3],XOR[3]);
+inverse_mix_columns MC3(XOR[3],Mix[2]);
+//==========================================
+
+//Round 4
+InvShiftRows Sh4(Mix[2],Shift[3]);
+Inv_Full_SubBytes S4(Shift[3] , Sub[3]);
+AddRoundKey ARK4(Sub[3],Keys[4],XOR[4]);
+inverse_mix_columns MC4(XOR[4],Mix[3]);
+//==========================================
+
+//Round 5
+InvShiftRows Sh5(Mix[3],Shift[4]);
+Inv_Full_SubBytes S5(Shift[4] , Sub[4]);
+AddRoundKey ARK5(Sub[4],Keys[5],XOR[5]);
+inverse_mix_columns MC5(XOR[5],Mix[4]);
+//==========================================
+
+//Round 6
+InvShiftRows Sh6(Mix[4],Shift[5]);
+Inv_Full_SubBytes S6(Shift[5] , Sub[5]);
+AddRoundKey ARK6(Sub[5],Keys[6],XOR[6]);
+inverse_mix_columns MC6(XOR[6],Mix[5]);
+//==========================================
+
+//Round 7
+InvShiftRows Sh7(Mix[5],Shift[6]);
+Inv_Full_SubBytes S7(Shift[6] , Sub[6]);
+AddRoundKey ARK7(Sub[6],Keys[7],XOR[7]);
+inverse_mix_columns MC7(XOR[7],Mix[6]);
+//==========================================
+
+//Round 8
+InvShiftRows Sh8(Mix[6],Shift[7]);
+Inv_Full_SubBytes S8(Shift[7] , Sub[7]);
+AddRoundKey ARK8(Sub[7],Keys[8],XOR[8]);
+inverse_mix_columns MC8(XOR[8],Mix[7]);
+//==========================================
+
+//Round 9
+InvShiftRows Sh9(Mix[7],Shift[8]);
+Inv_Full_SubBytes S9(Shift[8] , Sub[8]);
+AddRoundKey ARK9(Sub[8],Keys[9],XOR[9]);
+inverse_mix_columns MC9(XOR[9],Mix[8]);
+//==========================================
+
+//Round 10
+InvShiftRows Sh10(Mix[8],Shift[9]);
+Inv_Full_SubBytes S10(Shift[9] , Sub[9]);
+AddRoundKey ARK10(Sub[9],Keys[10],XOR[10]);
+inverse_mix_columns MC10(XOR[10],Mix[9]);
+//==========================================
+
+//Round 11
+InvShiftRows Sh11(Mix[9],Shift[10]);
+Inv_Full_SubBytes S11(Shift[10] , Sub[10]);
+AddRoundKey ARK11(Sub[10],Keys[11],XOR[11]);
+inverse_mix_columns MC11(XOR[11],Mix[10]);
+//==========================================
+
+//Round 12
+InvShiftRows Sh12(Mix[10],Shift[11]);
+Inv_Full_SubBytes S12(Shift[11] , Sub[11]);
+AddRoundKey ARK12(Sub[11],Keys[12],XOR[12]);
+inverse_mix_columns MC12(XOR[12],Mix[11]);
+//==========================================
+
+//Round 13
+InvShiftRows Sh13(Mix[11],Shift[12]);
+Inv_Full_SubBytes S13(Shift[12] , Sub[12]);
+AddRoundKey ARK13(Sub[12],Keys[13],XOR[13]);
+inverse_mix_columns MC13(XOR[13],Mix[12]);
+//==========================================
+
+//Round 14
+InvShiftRows Sh14(Mix[12],Shift[13]);
+Inv_Full_SubBytes S14(Shift[13] , Sub[13]);
+AddRoundKey ARK14(Sub[13],Keys[14],XOR[14]);
+//==========================================
+
+
+
+assign Decryption = XOR[14];
+endmodule 

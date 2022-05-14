@@ -1,0 +1,14 @@
+vendor_name = ModelSim
+source_file = 1, E:/AESV3/SubBytes.v
+source_file = 1, E:/AESV3/AES.v
+source_file = 1, E:/AESV3/ShiftRows.v
+source_file = 1, E:/AESV3/MixColumns.v
+source_file = 1, E:/AESV3/AddRoundKey.v
+source_file = 1, E:/AESV3/GenerateKey4.v
+source_file = 1, E:/AESV3/GenerateKey6.v
+source_file = 1, E:/AESV3/GenerateKey8.v
+source_file = 1, E:/AESV3/Wrapper.v
+source_file = 1, E:/AESV3/db/AES.cbx.xml
+design_name = Wrapper
+instance = comp, \Clk~input , Clk~input, Wrapper, 1
+instance = comp, \~QUARTUS_CREATED_GND~I , ~QUARTUS_CREATED_GND~I, Wrapper, 1

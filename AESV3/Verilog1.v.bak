@@ -1,0 +1,6 @@
+module GenerateKeys #(parameter N = 4, parameter Rounds = 10)
+							(input [(32*N)-1 : 0] OriginalKey ,output[(Round*128) + 127 :0] OutKeys);
+
+
+
+endmodule 	

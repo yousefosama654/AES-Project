@@ -1,0 +1,930 @@
+Analysis & Synthesis report for AES
+Fri May 13 15:56:56 2022
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Port Connectivity Checks: "AES:A|DecryptNK6:D6|KeysGeneration6:KG6"
+ 10. Port Connectivity Checks: "AES:A|DecryptNK4:D4|inverse_mix_columns:MC1|mixCol:Column4"
+ 11. Port Connectivity Checks: "AES:A|DecryptNK4:D4|inverse_mix_columns:MC1|mixCol:Column3"
+ 12. Port Connectivity Checks: "AES:A|DecryptNK4:D4|inverse_mix_columns:MC1|mixCol:Column2"
+ 13. Port Connectivity Checks: "AES:A|DecryptNK4:D4|inverse_mix_columns:MC1|mixCol:Column1"
+ 14. Port Connectivity Checks: "AES:A|DecryptNK4:D4|KeysGeneration4:KG4"
+ 15. Port Connectivity Checks: "AES:A|EncryptNK8:E8|KeysGeneration8:KG8|GenerateKey8:K7"
+ 16. Port Connectivity Checks: "AES:A|EncryptNK8:E8|KeysGeneration8:KG8|GenerateKey8:K6"
+ 17. Port Connectivity Checks: "AES:A|EncryptNK8:E8|KeysGeneration8:KG8|GenerateKey8:K5"
+ 18. Port Connectivity Checks: "AES:A|EncryptNK8:E8|KeysGeneration8:KG8|GenerateKey8:K4"
+ 19. Port Connectivity Checks: "AES:A|EncryptNK8:E8|KeysGeneration8:KG8|GenerateKey8:K3"
+ 20. Port Connectivity Checks: "AES:A|EncryptNK8:E8|KeysGeneration8:KG8|GenerateKey8:K2"
+ 21. Port Connectivity Checks: "AES:A|EncryptNK8:E8|KeysGeneration8:KG8|GenerateKey8:K1"
+ 22. Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K8"
+ 23. Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K7"
+ 24. Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K6"
+ 25. Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K5"
+ 26. Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K4"
+ 27. Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K3"
+ 28. Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K2"
+ 29. Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K1"
+ 30. Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6"
+ 31. Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K10"
+ 32. Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K9"
+ 33. Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K8"
+ 34. Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K7"
+ 35. Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K6"
+ 36. Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K5"
+ 37. Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K4"
+ 38. Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K3"
+ 39. Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K2"
+ 40. Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K1"
+ 41. Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4"
+ 42. Port Connectivity Checks: "AES:A|EncryptNK4:E4"
+ 43. Port Connectivity Checks: "AES:A"
+ 44. Post-Synthesis Netlist Statistics for Top Partition
+ 45. Elapsed Time Per Partition
+ 46. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Fri May 13 15:56:56 2022       ;
+; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                   ; AES                                         ;
+; Top-level Entity Name           ; Wrapper                                     ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 0                                           ;
+; Total pins                      ; 1                                           ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; Wrapper            ; AES                ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                               ;
++----------------------------------+-----------------+------------------------+------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path ; Library ;
++----------------------------------+-----------------+------------------------+------------------------------+---------+
+; SubBytes.v                       ; yes             ; User Verilog HDL File  ; E:/AESV3/SubBytes.v          ;         ;
+; AES.v                            ; yes             ; User Verilog HDL File  ; E:/AESV3/AES.v               ;         ;
+; ShiftRows.v                      ; yes             ; User Verilog HDL File  ; E:/AESV3/ShiftRows.v         ;         ;
+; MixColumns.v                     ; yes             ; User Verilog HDL File  ; E:/AESV3/MixColumns.v        ;         ;
+; AddRoundKey.v                    ; yes             ; User Verilog HDL File  ; E:/AESV3/AddRoundKey.v       ;         ;
+; GenerateKey4.v                   ; yes             ; User Verilog HDL File  ; E:/AESV3/GenerateKey4.v      ;         ;
+; GenerateKey6.v                   ; yes             ; User Verilog HDL File  ; E:/AESV3/GenerateKey6.v      ;         ;
+; GenerateKey8.v                   ; yes             ; User Verilog HDL File  ; E:/AESV3/GenerateKey8.v      ;         ;
+; Wrapper.v                        ; yes             ; User Verilog HDL File  ; E:/AESV3/Wrapper.v           ;         ;
++----------------------------------+-----------------+------------------------+------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimate of Logic utilization (ALMs needed) ; 0     ;
+;                                             ;       ;
+; Combinational ALUT usage for logic          ; 0     ;
+;     -- 7 input functions                    ; 0     ;
+;     -- 6 input functions                    ; 0     ;
+;     -- 5 input functions                    ; 0     ;
+;     -- 4 input functions                    ; 0     ;
+;     -- <=3 input functions                  ; 0     ;
+;                                             ;       ;
+; Dedicated logic registers                   ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 1     ;
+;                                             ;       ;
+; Total DSP Blocks                            ; 0     ;
+;                                             ;       ;
+; Maximum fan-out node                        ; Clk   ;
+; Maximum fan-out                             ; 1     ;
+; Total fan-out                               ; 1     ;
+; Average fan-out                             ; 0.50  ;
++---------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; |Wrapper                   ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 1    ; 0            ; |Wrapper            ; Wrapper     ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|DecryptNK6:D6|KeysGeneration6:KG6"                                                                                                                                                   ;
++-------------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                              ;
++-------------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; OriginalKey ; Input ; Warning  ; Input port expression (193 bits) is wider than the input port (192 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++-------------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|DecryptNK4:D4|inverse_mix_columns:MC1|mixCol:Column4"                                                                                                                              ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[3..1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[0]    ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|DecryptNK4:D4|inverse_mix_columns:MC1|mixCol:Column3"                                                                                                                              ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[3..1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[0]    ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|DecryptNK4:D4|inverse_mix_columns:MC1|mixCol:Column2"                                                                                                                              ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[3..1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[0]    ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|DecryptNK4:D4|inverse_mix_columns:MC1|mixCol:Column1"                                                                                                                              ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[3..1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[0]    ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|DecryptNK4:D4|KeysGeneration4:KG4"                                                           ;
++---------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port                ; Type   ; Severity ; Details                                                                             ;
++---------------------+--------+----------+-------------------------------------------------------------------------------------+
+; OutKeys[1407..1280] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK8:E8|KeysGeneration8:KG8|GenerateKey8:K7"                                                                                                                                     ;
++----------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                                                                                                                            ;
++----------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round          ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[2..0]    ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[3]       ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; OutKey[127..0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
++----------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK8:E8|KeysGeneration8:KG8|GenerateKey8:K6"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[2..1] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[3]    ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[0]    ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK8:E8|KeysGeneration8:KG8|GenerateKey8:K5"                                                                                                                              ;
++----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                                                                                                                                                            ;
++----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round    ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[3] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[2] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[0] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK8:E8|KeysGeneration8:KG8|GenerateKey8:K4"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[1..0] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[3]    ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[2]    ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK8:E8|KeysGeneration8:KG8|GenerateKey8:K3"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[1..0] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[3..2] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK8:E8|KeysGeneration8:KG8|GenerateKey8:K2"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[3..2] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[1]    ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[0]    ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK8:E8|KeysGeneration8:KG8|GenerateKey8:K1"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[3..1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[0]    ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K8"                                                                                                                                    ;
++---------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                                                                                                                            ;
++---------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round         ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[2..0]   ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[3]      ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; OutKey[63..0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
++---------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K7"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[2..0] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[3]    ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K6"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[2..1] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[3]    ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[0]    ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K5"                                                                                                                              ;
++----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                                                                                                                                                            ;
++----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round    ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[3] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[2] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[0] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K4"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[1..0] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[3]    ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[2]    ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K3"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[1..0] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[3..2] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K2"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[3..2] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[1]    ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[0]    ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K1"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[3..1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[0]    ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK6:E6|KeysGeneration6:KG6"                                                                                                                                                   ;
++-------------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                              ;
++-------------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; OriginalKey ; Input ; Warning  ; Input port expression (193 bits) is wider than the input port (192 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++-------------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K10"                                                                                                                             ;
++----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                                                                                                                                                            ;
++----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round    ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[3] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[2] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[1] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[0] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K9"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[2..1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[3]    ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[0]    ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K8"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[2..0] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[3]    ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K7"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[2..0] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[3]    ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K6"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[2..1] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[3]    ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[0]    ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K5"                                                                                                                              ;
++----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                                                                                                                                                            ;
++----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round    ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[3] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[2] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[0] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K4"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[1..0] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[3]    ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[2]    ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K3"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[1..0] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[3..2] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K2"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[3..2] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[1]    ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Round[0]    ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K1"                                                                                                                                 ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Round       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Round[3..1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Round[0]    ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++-------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK4:E4|KeysGeneration4:KG4"                                                           ;
++---------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port                ; Type   ; Severity ; Details                                                                             ;
++---------------------+--------+----------+-------------------------------------------------------------------------------------+
+; OutKeys[1407..1280] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A|EncryptNK4:E4"                                                                                                                        ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                      ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Clk  ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AES:A"                                                                                                                                                                                   ;
++------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                                                                                                                            ;
++------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Key        ; Input  ; Warning  ; Input port expression (128 bits) is smaller than the input port (257 bits) it drives.  Extra input bit(s) "Key[256..128]" will be connected to GND.                                ;
+; Nk         ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; Nk[1..0]   ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Nk[3]      ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; Nk[2]      ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; Encryption ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
+; Decryption ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
++------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-------------------+---------------------------------+
+; Type              ; Count                           ;
++-------------------+---------------------------------+
+; boundary_port     ; 1                               ;
+;                   ;                                 ;
+; Max LUT depth     ; 0.00                            ;
+; Average LUT depth ; 0.00                            ;
++-------------------+---------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Fri May 13 15:56:45 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off AES -c AES
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 4 design units, including 4 entities, in source file subbytes.v
+    Info (12023): Found entity 1: SubBytes File: E:/AESV3/SubBytes.v Line: 4
+    Info (12023): Found entity 2: FullSubBytes File: E:/AESV3/SubBytes.v Line: 275
+    Info (12023): Found entity 3: InvSubBytes File: E:/AESV3/SubBytes.v Line: 286
+    Info (12023): Found entity 4: Inv_Full_SubBytes File: E:/AESV3/SubBytes.v Line: 558
+Info (12021): Found 1 design units, including 1 entities, in source file aes.v
+    Info (12023): Found entity 1: AES File: E:/AESV3/AES.v Line: 2
+Info (12021): Found 2 design units, including 2 entities, in source file shiftrows.v
+    Info (12023): Found entity 1: ShiftRows File: E:/AESV3/ShiftRows.v Line: 1
+    Info (12023): Found entity 2: InvShiftRows File: E:/AESV3/ShiftRows.v Line: 18
+Info (12021): Found 3 design units, including 3 entities, in source file mixcolumns.v
+    Info (12023): Found entity 1: MixColumns File: E:/AESV3/MixColumns.v Line: 1
+    Info (12023): Found entity 2: mixCol File: E:/AESV3/MixColumns.v Line: 51
+    Info (12023): Found entity 3: inverse_mix_columns File: E:/AESV3/MixColumns.v Line: 110
+Info (12021): Found 1 design units, including 1 entities, in source file addroundkey.v
+    Info (12023): Found entity 1: AddRoundKey File: E:/AESV3/AddRoundKey.v Line: 1
+Info (12021): Found 4 design units, including 4 entities, in source file generatekey4.v
+    Info (12023): Found entity 1: GenerateKey4 File: E:/AESV3/GenerateKey4.v Line: 1
+    Info (12023): Found entity 2: KeysGeneration4 File: E:/AESV3/GenerateKey4.v Line: 47
+    Info (12023): Found entity 3: EncryptNK4 File: E:/AESV3/GenerateKey4.v Line: 87
+    Info (12023): Found entity 4: DecryptNK4 File: E:/AESV3/GenerateKey4.v Line: 184
+Info (12021): Found 4 design units, including 4 entities, in source file generatekey6.v
+    Info (12023): Found entity 1: GenerateKey6 File: E:/AESV3/GenerateKey6.v Line: 1
+    Info (12023): Found entity 2: KeysGeneration6 File: E:/AESV3/GenerateKey6.v Line: 46
+    Info (12023): Found entity 3: EncryptNK6 File: E:/AESV3/GenerateKey6.v Line: 81
+    Info (12023): Found entity 4: DecryptNK6 File: E:/AESV3/GenerateKey6.v Line: 188
+Info (12021): Found 4 design units, including 4 entities, in source file generatekey8.v
+    Info (12023): Found entity 1: GenerateKey8 File: E:/AESV3/GenerateKey8.v Line: 1
+    Info (12023): Found entity 2: KeysGeneration8 File: E:/AESV3/GenerateKey8.v Line: 47
+    Info (12023): Found entity 3: EncryptNK8 File: E:/AESV3/GenerateKey8.v Line: 73
+    Info (12023): Found entity 4: DecryptNK8 File: E:/AESV3/GenerateKey8.v Line: 194
+Info (12021): Found 1 design units, including 1 entities, in source file wrapper.v
+    Info (12023): Found entity 1: Wrapper File: E:/AESV3/Wrapper.v Line: 1
+Info (12127): Elaborating entity "Wrapper" for the top level hierarchy
+Info (12128): Elaborating entity "AES" for hierarchy "AES:A" File: E:/AESV3/Wrapper.v Line: 12
+Info (12128): Elaborating entity "EncryptNK4" for hierarchy "AES:A|EncryptNK4:E4" File: E:/AESV3/AES.v Line: 25
+Info (12128): Elaborating entity "KeysGeneration4" for hierarchy "AES:A|EncryptNK4:E4|KeysGeneration4:KG4" File: E:/AESV3/GenerateKey4.v Line: 102
+Info (12128): Elaborating entity "GenerateKey4" for hierarchy "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K1" File: E:/AESV3/GenerateKey4.v Line: 58
+Info (12128): Elaborating entity "SubBytes" for hierarchy "AES:A|EncryptNK4:E4|KeysGeneration4:KG4|GenerateKey4:K1|SubBytes:SB" File: E:/AESV3/GenerateKey4.v Line: 33
+Info (12128): Elaborating entity "AddRoundKey" for hierarchy "AES:A|EncryptNK4:E4|AddRoundKey:ARK0" File: E:/AESV3/GenerateKey4.v Line: 119
+Info (12128): Elaborating entity "FullSubBytes" for hierarchy "AES:A|EncryptNK4:E4|FullSubBytes:S1" File: E:/AESV3/GenerateKey4.v Line: 122
+Info (12128): Elaborating entity "ShiftRows" for hierarchy "AES:A|EncryptNK4:E4|ShiftRows:Sh1" File: E:/AESV3/GenerateKey4.v Line: 123
+Info (12128): Elaborating entity "MixColumns" for hierarchy "AES:A|EncryptNK4:E4|MixColumns:MC1" File: E:/AESV3/GenerateKey4.v Line: 124
+Warning (10036): Verilog HDL or VHDL warning at MixColumns.v(4): object "b1" assigned a value but never read File: E:/AESV3/MixColumns.v Line: 4
+Warning (10036): Verilog HDL or VHDL warning at MixColumns.v(5): object "b2" assigned a value but never read File: E:/AESV3/MixColumns.v Line: 5
+Warning (10036): Verilog HDL or VHDL warning at MixColumns.v(6): object "b3" assigned a value but never read File: E:/AESV3/MixColumns.v Line: 6
+Info (12128): Elaborating entity "EncryptNK6" for hierarchy "AES:A|EncryptNK6:E6" File: E:/AESV3/AES.v Line: 26
+Info (12128): Elaborating entity "KeysGeneration6" for hierarchy "AES:A|EncryptNK6:E6|KeysGeneration6:KG6" File: E:/AESV3/GenerateKey6.v Line: 94
+Info (12128): Elaborating entity "GenerateKey6" for hierarchy "AES:A|EncryptNK6:E6|KeysGeneration6:KG6|GenerateKey6:K1" File: E:/AESV3/GenerateKey6.v Line: 57
+Info (12128): Elaborating entity "EncryptNK8" for hierarchy "AES:A|EncryptNK8:E8" File: E:/AESV3/AES.v Line: 27
+Info (12128): Elaborating entity "KeysGeneration8" for hierarchy "AES:A|EncryptNK8:E8|KeysGeneration8:KG8" File: E:/AESV3/GenerateKey8.v Line: 80
+Info (12128): Elaborating entity "GenerateKey8" for hierarchy "AES:A|EncryptNK8:E8|KeysGeneration8:KG8|GenerateKey8:K1" File: E:/AESV3/GenerateKey8.v Line: 53
+Info (12128): Elaborating entity "DecryptNK4" for hierarchy "AES:A|DecryptNK4:D4" File: E:/AESV3/AES.v Line: 29
+Info (12128): Elaborating entity "InvShiftRows" for hierarchy "AES:A|DecryptNK4:D4|InvShiftRows:Sh1" File: E:/AESV3/GenerateKey4.v Line: 218
+Info (12128): Elaborating entity "Inv_Full_SubBytes" for hierarchy "AES:A|DecryptNK4:D4|Inv_Full_SubBytes:S1" File: E:/AESV3/GenerateKey4.v Line: 219
+Info (12128): Elaborating entity "InvSubBytes" for hierarchy "AES:A|DecryptNK4:D4|Inv_Full_SubBytes:S1|InvSubBytes:S0" File: E:/AESV3/SubBytes.v Line: 560
+Info (12128): Elaborating entity "inverse_mix_columns" for hierarchy "AES:A|DecryptNK4:D4|inverse_mix_columns:MC1" File: E:/AESV3/GenerateKey4.v Line: 221
+Info (12128): Elaborating entity "mixCol" for hierarchy "AES:A|DecryptNK4:D4|inverse_mix_columns:MC1|mixCol:Column1" File: E:/AESV3/MixColumns.v Line: 116
+Info (12128): Elaborating entity "DecryptNK6" for hierarchy "AES:A|DecryptNK6:D6" File: E:/AESV3/AES.v Line: 30
+Info (12128): Elaborating entity "DecryptNK8" for hierarchy "AES:A|DecryptNK8:D8" File: E:/AESV3/AES.v Line: 31
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K7" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey8.v Line: 59
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K6" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey8.v Line: 58
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K5" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey8.v Line: 57
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey8.v Line: 56
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey8.v Line: 55
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey8.v Line: 54
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey8.v Line: 53
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K8" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey6.v Line: 64
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K7" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey6.v Line: 63
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K6" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey6.v Line: 62
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K5" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey6.v Line: 61
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey6.v Line: 60
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey6.v Line: 59
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey6.v Line: 58
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey6.v Line: 57
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 119
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 118
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 117
+Warning (12020): Port "ordered port 2" on the entity instantiation of "Column1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/MixColumns.v Line: 116
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K10" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey4.v Line: 67
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K9" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey4.v Line: 66
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K8" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey4.v Line: 65
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K7" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey4.v Line: 64
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K6" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey4.v Line: 63
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K5" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey4.v Line: 62
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K4" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey4.v Line: 61
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K3" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey4.v Line: 60
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K2" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey4.v Line: 59
+Warning (12020): Port "ordered port 1" on the entity instantiation of "K1" is connected to a signal of width 32. The formal width of the signal in the module is 4.  The extra bits will be ignored. File: E:/AESV3/GenerateKey4.v Line: 58
+Warning (12241): 33 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "Clk" File: E:/AESV3/Wrapper.v Line: 1
+Info (21057): Implemented 1 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 1 input pins
+    Info (21059): Implemented 0 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 160 warnings
+    Info: Peak virtual memory: 5232 megabytes
+    Info: Processing ended: Fri May 13 15:56:56 2022
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:21
+
+
